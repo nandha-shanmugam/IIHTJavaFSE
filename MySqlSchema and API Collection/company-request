@@ -1,0 +1,33 @@
+
+@Column(name = "company_code")
+	private String companyCode;
+	
+	@Column(name = "company_name")
+	private String companyName;
+
+	@Column(name = "company_ceo")
+	private String companyCeo;
+	
+	@Column(name = "company_turnover")
+	private Float companyTurnover;
+	
+	@Column(name = "company_website")
+	private String companyWebsite;
+	
+	@OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("company")
+	private List<StockExchange> stockExchanges;
+	
+{
+	"companyCode" : "2021_TCS",
+	"companyName" : "Tata Consultancy Services",
+	"companyCeo" : "Rajesh Gobinathan",
+	"companyTurnover" : 32562.00,
+	"companyWebsite" : "https://www.tcs.com",
+	"stockExchanges" : [
+		{
+			"price" : 45.78
+		}
+	]
+	
+}

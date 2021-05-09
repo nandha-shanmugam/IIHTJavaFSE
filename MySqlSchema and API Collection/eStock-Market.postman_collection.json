@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "1e372cb0-9c08-4490-a3b5-edc7145b04c7",
+		"name": "eStock-Market",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findAllCompanies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/v1.0/market/company/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"v1.0",
+						"market",
+						"company",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findCompany by code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/v1.0/market/company/info/2021_TCS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"v1.0",
+						"market",
+						"company",
+						"info",
+						"2021_TCS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findCompany by codeAndStockRange",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/v1.0/market/stock/get/COG_799072/2021-04-25/2021-05-09",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"v1.0",
+						"market",
+						"stock",
+						"get",
+						"COG_799072",
+						"2021-04-25",
+						"2021-05-09"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddNewCompany",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"companyCode\" : \"2021_TCS\",\r\n\t\"companyName\" : \"Tata Consultancy Services\",\r\n\t\"companyCeo\" : \"Rajesh Gobinathan\",\r\n\t\"companyTurnover\" : 32562.00,\r\n    \"companyWebsite\" : \"https://www.tcs.com\",\r\n\t\"stockExchanges\" : [\r\n\t\t{\r\n\t\t\t\"price\" : 45.78\r\n\t\t}\r\n\t]\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/v1.0/market/company/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"v1.0",
+						"market",
+						"company",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddNewStockForExistingCompany",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n\t\t{\r\n\t\t\t\"price\" : 75.98\r\n\t\t}\r\n\t]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/v1.0/market/stock/add/2021_TCS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"v1.0",
+						"market",
+						"stock",
+						"add",
+						"2021_TCS"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCompanyByCode",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n\t\t{\r\n\t\t\t\"price\" : 64.78\r\n\t\t},\r\n        {\r\n\t\t\t\"price\" : 26.56\r\n\t\t}\r\n\t]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/v1.0/market/company/delete/2021_TCSY",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"v1.0",
+						"market",
+						"company",
+						"delete",
+						"2021_TCSY"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
