@@ -1,0 +1,206 @@
+Company and Stock Management API info
+
+1. FindAll companies:
+----------------------
+GET
+http://localhost:9001/api/v1.0/market/company/getAll
+
+Response:
+
+[
+    {
+        "companyCode": "COG_799072",
+        "companyName": "Cognizant",
+        "stockExchange": {
+            "id": 14,
+            "price": 64.78,
+            "stockCreatedTs": {
+                "month": "MAY",
+                "year": 2021,
+                "dayOfMonth": 9,
+                "dayOfWeek": "SUNDAY",
+                "dayOfYear": 129,
+                "hour": 17,
+                "minute": 55,
+                "monthValue": 5,
+                "nano": 0,
+                "second": 57,
+                "chronology": {
+                    "id": "ISO",
+                    "calendarType": "iso8601"
+                }
+            }
+        }
+    },
+    {
+        "companyCode": "2021_TCS",
+        "companyName": "Tata Consultancy Services",
+        "stockExchange": {
+            "id": 16,
+            "price": 75.98,
+            "stockCreatedTs": {
+                "month": "MAY",
+                "year": 2021,
+                "dayOfMonth": 9,
+                "dayOfWeek": "SUNDAY",
+                "dayOfYear": 129,
+                "hour": 18,
+                "minute": 39,
+                "monthValue": 5,
+                "nano": 0,
+                "second": 55,
+                "chronology": {
+                    "id": "ISO",
+                    "calendarType": "iso8601"
+                }
+            }
+        }
+    }
+]
+
+2. findCompany by code
+----------------------
+
+GET:
+http://localhost:9001/api/v1.0/market/company/info/2021_TCS
+
+Response:
+
+{
+    "id": 12,
+    "companyCode": "2021_TCS",
+    "companyName": "Tata Consultancy Services",
+    "companyCeo": "Rajesh Gobinathan",
+    "companyTurnover": 32562.0,
+    "companyWebsite": "https://www.tcs.com",
+    "stockExchanges": [
+        {
+            "id": 16,
+            "price": 75.98,
+            "stockCreatedTs": {
+                "month": "MAY",
+                "year": 2021,
+                "dayOfMonth": 9,
+                "dayOfWeek": "SUNDAY",
+                "dayOfYear": 129,
+                "hour": 18,
+                "minute": 39,
+                "monthValue": 5,
+                "nano": 0,
+                "second": 55,
+                "chronology": {
+                    "id": "ISO",
+                    "calendarType": "iso8601"
+                }
+            }
+        }
+    ]
+}
+
+3. findCompany by codeAndStockRange
+
+GET
+http://localhost:9001/api/v1.0/market/stock/get/COG_799072/2021-04-25/2021-05-09
+
+Response:
+{
+    "companyCode": "COG_799072",
+    "companyName": "Cognizant",
+    "maxStockPrice": 150.55,
+    "minStockPrice": 120.25,
+    "avgStockPrice": 135.4000015258789,
+    "stockExchangeList": [
+        {
+            "id": 1,
+            "price": 120.25,
+            "stockCreatedTs": {
+                "month": "MAY",
+                "year": 2021,
+                "dayOfMonth": 2,
+                "dayOfWeek": "SUNDAY",
+                "dayOfYear": 122,
+                "hour": 21,
+                "minute": 16,
+                "monthValue": 5,
+                "nano": 0,
+                "second": 53,
+                "chronology": {
+                    "id": "ISO",
+                    "calendarType": "iso8601"
+                }
+            }
+        },
+        {
+            "id": 2,
+            "price": 150.55,
+            "stockCreatedTs": {
+                "month": "MAY",
+                "year": 2021,
+                "dayOfMonth": 2,
+                "dayOfWeek": "SUNDAY",
+                "dayOfYear": 122,
+                "hour": 21,
+                "minute": 17,
+                "monthValue": 5,
+                "nano": 0,
+                "second": 25,
+                "chronology": {
+                    "id": "ISO",
+                    "calendarType": "iso8601"
+                }
+            }
+        }
+    ]
+}
+
+4. AddNewCompany
+
+POST
+http://localhost:9001/api/v1.0/market/company/register
+
+Request:
+
+{
+	"companyCode" : "2021_TCS",
+	"companyName" : "Tata Consultancy Services",
+	"companyCeo" : "Rajesh Gobinathan",
+	"companyTurnover" : 32562.00,
+    "companyWebsite" : "https://www.tcs.com",
+	"stockExchanges" : [
+		{
+			"price" : 45.78
+		}
+	]
+	
+}
+
+Response:
+
+Company added successfully for comoany code : 2021_TCS
+
+5. AddNewStockForExistingCompany
+
+POST
+http://localhost:9001/api/v1.0/market/stock/add/2021_TCS
+
+Request:
+
+[
+		{
+			"price" : 75.98
+		}
+	]
+
+
+Response:
+
+Successfully added 1 stocks for the company code : 2021_TCS
+
+6. DeleteCompanyByCode
+
+DELETE
+http://localhost:9001/api/v1.0/market/company/delete/2021_TCSY
+
+Response:
+
+Company delete successfully.
