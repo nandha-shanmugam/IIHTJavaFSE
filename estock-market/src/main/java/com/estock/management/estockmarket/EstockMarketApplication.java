@@ -7,8 +7,12 @@ import org.springframework.context.annotation.Bean;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @EnableAutoConfiguration
 @SpringBootApplication
+@EnableSwagger2
+
 public class EstockMarketApplication {
 
 	public static void main(String[] args) {

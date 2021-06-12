@@ -23,7 +23,7 @@ import com.estock.management.estockmarket.service.CompanyService;
 import com.estock.management.estockmarket.util.CompanyStockValidationUtils;
 
 @RestController
-@RequestMapping(value = "/api/v1.0/market")
+@RequestMapping(value = "/market")
 public class CompanyController {
 	
 	private static final Logger LOG=LoggerFactory.getLogger(CompanyController.class);

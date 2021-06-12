@@ -131,7 +131,9 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public Company findCompanyByCode(String companyCode) {
 		String message;
+		System.out.println("entry");
 		Optional<Company> exisitingCompany = companyRepo.findByCompanyCode(companyCode);
+		System.out.println("db entry done");
 		if(!exisitingCompany.isPresent()) {
 			message = "Company not existing by company code : "+companyCode;
 			LOG.info(message);
